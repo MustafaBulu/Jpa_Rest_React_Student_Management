@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import StudentService from '../services/StudentService';
 
 class ListStudentComponent extends Component{
 
@@ -12,6 +13,14 @@ class ListStudentComponent extends Component{
     }
 
 
+    componentDidMount(){
+        StudentService.getStudent().then((res) => {
+            this.setState({student: res.data});
+
+        });
+    }
+
+
     render(){
         return(
             <div>
@@ -20,11 +29,12 @@ class ListStudentComponent extends Component{
                     <table className="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>Ogrenci Numarasi</th>
+                                
                                 <th>Adi</th>
                                 <th>Soyadi</th>
                                 <th>Bolumu</th>
                                 <th>Kayit Tarihi</th>
+                                <th>Islemler</th>
                             </tr>
                         </thead>
 
@@ -32,11 +42,11 @@ class ListStudentComponent extends Component{
                             {
                                 this.state.student.map(
                                     student =>
-                                    <tr key={student.id}>
-                                        <td>{student.firstName}</td>
-                                        <td>{student.surName}</td>
-                                        <td>{student.department}</td>
-                                        <td>{student.date}</td>
+                                    <tr key={student.studentid}>
+                                        <td>{student.studentName}</td>
+                                        <td>{student.studentSurName}</td>
+                                        <td>{student.studentDepartment}</td>
+                                        <td>{student.creationDate}</td>
 
                                     </tr>
                                 )
