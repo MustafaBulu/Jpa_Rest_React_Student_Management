@@ -21,12 +21,10 @@ public class StudentController {
         return iStudentRepository.findAll();
     }
 
-    @GetMapping("/insert")
-    @ResponseBody // bunu yazmazsak return kısmındaki sayfayı döndürmeye çalışır
-    public String insert(){
-        StudentEntity studentEntity= new StudentEntity(0,"Mustafa","Bulu","Computer Engineering");
-        iStudentRepository.save(studentEntity); // 0 ise insert yapıyor 0 dan farklı ise güncelleme yapıyor.
-        return "Ogrenci Eklendi:  "+studentEntity.getStudentid() + "  " + studentEntity.getStudentName()+ " " +studentEntity.getStudentSurName() + "  "+studentEntity.getStudentDepartment();
+    //create method
+    @PostMapping("/students")
+    public StudentEntity createStudent(@RequestBody StudentEntity studentEntity){
+        return iStudentRepository.save(studentEntity);
     }
 
 
