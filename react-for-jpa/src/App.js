@@ -4,6 +4,7 @@ import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 import ListStudentComponent from './components/ListStudentComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
+import CreateStudentComponent from './components/CreateStudentComponent';
 
 function App() {
   return (
@@ -12,9 +13,10 @@ function App() {
         <HeaderComponent />
           <div className='container'>
               <div className="container">
-                  <Routes>
+                  <Routes>            
                       <Route path = "/" element = {<ListStudentComponent />}> </Route>
                       <Route path = "/students" element = {<ListStudentComponent />}> </Route>
+                      <Route path = "/add-students" element = {<CreateStudentComponent />}> </Route>
                       
                   </Routes>                      
               </div>   
@@ -26,6 +28,3 @@ function App() {
 }
 
 export default App;
-
-
-

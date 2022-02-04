@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import StudentService from '../services/StudentService';
 
+
 class ListStudentComponent extends Component{
+    
 
     constructor(props){
         super(props)
@@ -10,6 +12,7 @@ class ListStudentComponent extends Component{
 
 
         }
+        this.addStudent = this.addStudent.bind(this);
     }
 
 
@@ -20,11 +23,16 @@ class ListStudentComponent extends Component{
         });
     }
 
+    addStudent(){
+        this.props.history.push("/add-students")
+    }
 
     render(){
         return(
             <div>
                 <h2 className="text-center">Ogrenci Listesi</h2>
+                <div className='row'> </div>
+                    <button className='btn btn-primary' onClick={this.addStudent}>Ogrenci Ekle</button>
                 <div className="row">
                     <table className="table table-striped table-bordered">
                         <thead>
